@@ -6,6 +6,8 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import Home from './Home.vue';
+import AbtcForm from './AbtcForm.vue';
 
 defineProps({
     canLogin: Boolean,
@@ -26,6 +28,11 @@ const submit = () => {
         onFinish: () => form.reset('password'),
     });
 };
+
+const routes = {
+    '/': Home,
+    '/abtc-form': AbtcForm
+}
 </script>
 
 <template>
@@ -59,7 +66,7 @@ const submit = () => {
             </template>
         </div>
         <!-- <form @submit.prevent="submit"> -->
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
+        <!-- <div class="max-w-7xl mx-auto p-6 lg:p-8"> -->
            
             
                 <div class="mt-16">
@@ -106,14 +113,17 @@ const submit = () => {
                     Forgot your password?
                 </Link> -->
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }">
+                    
                     ABTC
+                    FORM
                 </PrimaryButton>
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     TB-DOTS
+                    FORM
                 </PrimaryButton>
             </div>
-        </div>
+        <!-- </div> -->
              
     </div>
         <!-- </form>   -->
