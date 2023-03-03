@@ -30,7 +30,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-    <Head title="Self Assessment Page" />
+    <Head title="Self-Assessment Tool" />
 
     <div
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"
@@ -58,17 +58,16 @@ const submit = () => {
                 >
             </template>
         </div>
-        <form @submit.prevent="submit">
-            <title>ABTC</title>
+        <!-- <form @submit.prevent="submit"> -->
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
            
             
                 <div class="mt-16">
-                    
+                <title>ABTC</title>
                 <div>
-                <InputLabel for="email" value="Email" />
+                <!-- <InputLabel for="email" value="Email" /> -->
 
-                <TextInput
+                <!-- <TextInput
                     id="email"
                     type="email"
                     class="mt-1 block w-full"
@@ -78,10 +77,10 @@ const submit = () => {
                     autocomplete="username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-2" :message="form.errors.email" /> -->
             </div>
 
-            <div class="mt-4">
+            <!-- <div class="mt-4">
                 <InputLabel for="password" value="Password" />
 
                 <TextInput
@@ -94,14 +93,9 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <!-- <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
             </div> -->
+
+           
 
             <div class="flex items-center justify-end mt-4">
                 <!-- <Link
@@ -113,13 +107,16 @@ const submit = () => {
                 </Link> -->
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Send
+                    ABTC
+                </PrimaryButton>
+                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    TB-DOTS
                 </PrimaryButton>
             </div>
         </div>
              
     </div>
-        </form>  
+        <!-- </form>   -->
     </div>
     </GuestLayout>
 </template>
