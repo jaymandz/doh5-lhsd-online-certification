@@ -19,6 +19,9 @@ defineProps({
 
 const facilityTypes = ref([]);
 
+const selectedFaciType = '';
+
+
 
 const submit = () => {
     form.post(route('login'), {
@@ -97,20 +100,23 @@ onMounted(() => {
             </li> -->
             <p>Facility Type</p>
             <div class="inline-block relative w-full py-4 flex-1">
-            <select
-              class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-              v-model="selectedFaciType"
-              @change="onChange($event)"
-            >
-              <option
-                v-for="(item, index) in facilityTypes"
-                :value="item.facilityTypeName"
-                :key="index"
-              >
-                {{ item.facilityTypeName }}
-              </option>
-            </select>
-        </div>
+                <select
+                class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                v-model="selectedFaciType"
+                @change="onChange($event)"
+                >
+                <option
+                    v-for="(item, index) in facilityTypes"
+                    :value="item.facilityTypeName"
+                    :key="index"
+                >
+                    {{ '[' + index + ']' + ' ' + item.facilityTypeName }}
+                </option>
+            
+                </select>
+          
+            </div>
+            {{ selectedFaciType }}
 
            
 

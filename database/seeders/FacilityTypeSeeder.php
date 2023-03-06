@@ -13,8 +13,11 @@ class FacilityTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        FacilityType::create([
-            'facilityTypeName' => 'ABTC'
+        $data = ([
+            ['facilityTypeName' => 'ABTC'],
+            ['facilityTypeName' => 'TB-DOTS']
         ]);
+        
+        FacilityType::insert($data);
     }
 }
