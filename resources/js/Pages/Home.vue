@@ -7,7 +7,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import Home from './Home.vue';
-import AbtcForm from './AbtcForm.vue';
+import AssessmentTool from './AssessmentTool.vue';
+import { ref, onMounted } from 'vue'
 
 defineProps({
     canLogin: Boolean,
@@ -16,12 +17,8 @@ defineProps({
     phpVersion: String,
 });
 
+const facilityTypes = ref([]);
 
-const form = useForm({
-    email: '',
-    password: '',
-    remember: false,
-});
 
 const submit = () => {
     form.post(route('login'), {
@@ -31,8 +28,19 @@ const submit = () => {
 
 const routes = {
     '/': Home,
-    '/abtc-form': AbtcForm
-}
+};
+
+onMounted(() => {
+    fetch('/facility-types').then(response => (
+        response.json()
+        ).then(response => (
+           facilityTypes.value = Object.values(response)
+            // console.log(facilityTypes.value[0].facilityTypeName)
+        )
+    ));
+});
+
+
 </script>
 
 <template>
@@ -70,23 +78,22 @@ const routes = {
            
             
                 <div class="mt-16">
-                <title>ABTC</title>
                 <div>
-                <!-- <InputLabel for="email" value="Email" /> -->
-
-                <!-- <TextInput
-                    id="email"
-                    type="email"
+               
+                <p>Facility Name</p>
+                <TextInput
+                    id="facilityName"
+                    type="text"
                     class="mt-1 block w-full"
-                    v-model="form.email"
+                    v-model="facilityName"
                     required
                     autofocus
-                    autocomplete="username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" /> -->
             </div>
-
+            <li v-for="fType in facilityTypes.value">
+            {{ fType.facilityTypeName }}
+            </li>
             <!-- <div class="mt-4">
                 <InputLabel for="password" value="Password" />
 
@@ -112,7 +119,7 @@ const routes = {
                 >
                     Forgot your password?
                 </Link> -->
-                <Link
+                <!-- <Link
                     :href="route('abtc-form')"
                     class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                     >
@@ -125,7 +132,7 @@ const routes = {
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     TB-DOTS
                     FORM
-                </PrimaryButton>
+                </PrimaryButton> -->
             </div>
         <!-- </div> -->
              

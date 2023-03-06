@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FacilityTypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,18 +26,21 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/abtc-form', function () {   
-    return Inertia::render('AbtcForm', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('abtc-form');
+// Route::get('/abtc-form', function () {   
+//     return Inertia::render('AbtcForm', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// })->name('abtc-form');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/facility-types', [FacilityTypeController::class, 'index']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
