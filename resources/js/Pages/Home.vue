@@ -20,7 +20,11 @@ defineProps({
 const facilityTypes = ref([]);
 
 const selectedFaciType = '';
+const facilityName = '';
 
+const test = () => {
+    console.log(selectedFaciType + ' ' + facilityName);
+}
 
 
 const submit = () => {
@@ -43,6 +47,9 @@ onMounted(() => {
     ));
 });
 
+const onChange = (event) => {
+            console.log(event.target.value)
+        }
 
 </script>
 
@@ -92,7 +99,7 @@ onMounted(() => {
                     required
                     autofocus
                 />
-
+                    
             </div>
             <br/>
             <!-- <li v-for="fType in facilityTypes">
@@ -106,11 +113,11 @@ onMounted(() => {
                 @change="onChange($event)"
                 >
                 <option
-                    v-for="(item, index) in facilityTypes"
-                    :value="item.facilityTypeName"
-                    :key="index"
+                    v-for="item in facilityTypes"
+                    :value="item.id"
+                    :key="item.id"
                 >
-                    {{ '[' + index + ']' + ' ' + item.facilityTypeName }}
+                    {{ '[' + item.id + ']' + ' ' + item.facilityTypeName }}
                 </option>
             
                 </select>
@@ -121,27 +128,9 @@ onMounted(() => {
            
 
             <div class="flex items-center justify-end mt-4">
-                <!-- <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Forgot your password?
-                </Link> -->
-                <!-- <Link
-                    :href="route('abtc-form')"
-                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                    >
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }">
-                    
-                    ABTC
-                    FORM
+                <PrimaryButton class="ml-4" @click="test(facilityName, selectedFaciType)">
+                    SEND
                 </PrimaryButton>
-                </Link>
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    TB-DOTS
-                    FORM
-                </PrimaryButton> -->
             </div>
         <!-- </div> -->
              
