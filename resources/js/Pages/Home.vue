@@ -91,7 +91,7 @@ onMounted(() => {
                 />
 
             </div>
-            <li v-for="fType in facilityTypes.value">
+            <li v-for="fType in facilityTypes">
             {{ fType.facilityTypeName }}
             </li>
             <!-- <div class="mt-4">
