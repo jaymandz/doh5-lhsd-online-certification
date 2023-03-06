@@ -91,23 +91,26 @@ onMounted(() => {
                 />
 
             </div>
-            <li v-for="fType in facilityTypes">
+            <br/>
+            <!-- <li v-for="fType in facilityTypes">
             {{ fType.facilityTypeName }}
-            </li>
-            <!-- <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div> -->
+            </li> -->
+            <p>Facility Type</p>
+            <div class="inline-block relative w-full py-4 flex-1">
+            <select
+              class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              v-model="selectedFaciType"
+              @change="onChange($event)"
+            >
+              <option
+                v-for="(item, index) in facilityTypes"
+                :value="item.facilityTypeName"
+                :key="index"
+              >
+                {{ item.facilityTypeName }}
+              </option>
+            </select>
+        </div>
 
            
 
