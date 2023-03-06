@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\AssessmentTools;
+use App\Models\FacilityType;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -33,6 +35,10 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
+            ],
+            'assessmentTools' => [
+                'selectedFaciType' => $request->selectedFaciType,
+                'facilityName' => $request->facilityName
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [

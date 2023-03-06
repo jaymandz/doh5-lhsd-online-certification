@@ -5,9 +5,10 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import Home from './Home.vue';
 import AssessmentTool from './AssessmentTool.vue';
+import { computed } from 'vue';
 
 defineProps({
     canLogin: Boolean,
@@ -29,6 +30,8 @@ const submit = () => {
     });
 };
 
+const newData = computed(() => usePage().props.assessmentTools);
+
 const routes = {
     '/': Home,
     '/assessment-tool': AssessmentTool
@@ -46,13 +49,14 @@ const data = [
    <Head title="Assessment Form"/>
    <form @submit.prevent="submit">
         <!-- <div class="max-w-7xl mx-auto p-6 lg:p-8"> -->
-           
-            
+       
             <div class="mt-16">
-                <label for="assessment-tool">ASSESSMENT TOOL</label>
+               
                 <div>
-                <InputLabel for="email" value="Email" />
-
+                <label for="assessment-tool">ASSESSMENT TOOL</label>
+                {{newData.facilityName}}
+            <!-- {{ newData.selectedFaciType }}
+             {{ newData.facilityName }} -->
                 <TextInput
                     id="email"
                     type="email"

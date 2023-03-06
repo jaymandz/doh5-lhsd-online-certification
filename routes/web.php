@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,7 +40,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/facility-types', [FacilityTypeController::class, 'index']);
-
+Route::get('/assessment-tool', function (Request $request) {   
+    dd($request);
+    return Inertia::render('AssessmentTool', [
+               'facilityName' => $request->facilityName,
+               'selectedFaciType' => $request->selectedFaciType
+            ]);
+})->name('assessment-tool');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

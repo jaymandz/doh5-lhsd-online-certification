@@ -6,31 +6,37 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+// import { Inertia } from '@inertiajs/inertia';
 import Home from './Home.vue';
 import AssessmentTool from './AssessmentTool.vue';
 import { ref, onMounted } from 'vue'
 
-defineProps({
-    canLogin: Boolean,
-    canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String,
+// const props = defineProps({
+//     facilityName: {
+//         type: String
+//     },
+//     selectedFaciType: {
+//         type: Number
+//     }
+// });
+
+const form = useForm({
+    facilityName: null,
+    selectedFaciType: null
 });
 
 const facilityTypes = ref([]);
 
-const selectedFaciType = '';
-const facilityName = '';
+// const selectedFaciType = '';
+// const facilityName = '';
 
-const test = () => {
-    console.log(selectedFaciType + ' ' + facilityName);
+const test = (log1, log2) => {
+    console.log(log1 + ' ' + log2);
 }
 
 
 const submit = () => {
-    form.post(route('login'), {
-        onFinish: () => form.reset('password'),
-    });
+    form.post(route('assessment-tool'));
 };
 
 const routes = {
@@ -56,10 +62,11 @@ const onChange = (event) => {
 <template>
     <GuestLayout>
     <Head title="Self-Assessment Tool" />
-
+    <b>ASSESSMENT TOOL</b>
     <div
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"
     >
+    
         <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
             <Link
                 v-if="$page.props.auth.user"
@@ -83,10 +90,10 @@ const onChange = (event) => {
                 >
             </template>
         </div>
-        <!-- <form @submit.prevent="submit"> -->
-        <!-- <div class="max-w-7xl mx-auto p-6 lg:p-8"> -->
+        <form @submit.prevent="submit"> 
+        <div class="max-w-7xl mx-auto p-6 lg:p-8"> 
            
-            
+          
                 <div class="mt-16">
                 <div>
                
@@ -95,7 +102,7 @@ const onChange = (event) => {
                     id="facilityName"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="facilityName"
+                    v-model="form.facilityName"
                     required
                     autofocus
                 />
@@ -109,7 +116,7 @@ const onChange = (event) => {
             <div class="inline-block relative w-full py-4 flex-1">
                 <select
                 class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                v-model="selectedFaciType"
+                v-model="form.selectedFaciType"
                 @change="onChange($event)"
                 >
                 <option
@@ -128,14 +135,15 @@ const onChange = (event) => {
            
 
             <div class="flex items-center justify-end mt-4">
-                <PrimaryButton class="ml-4" @click="test(facilityName, selectedFaciType)">
+                <!-- <PrimaryButton class="ml-4" @click="test(facilityName, selectedFaciType)">
                     SEND
-                </PrimaryButton>
+                </PrimaryButton> -->
+                 <button type="submit">SEND</button>
             </div>
-        <!-- </div> -->
+        </div> 
              
     </div>
-        <!-- </form>   -->
+        </form>   
     </div>
     </GuestLayout>
 </template>
