@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\FacilityTypeSeeder;
+use Database\Seeders\AssessmentToolsSeeder;
+use Database\Seeders\SubgoalsSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,9 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(
+        $this->call([
             FacilityTypeSeeder::class,
-            // AssessmentToolsSeeder::class
-        );
+            AssessmentToolsSeeder::class,
+            SubgoalsSeeder::class
+        ]);
     }
 }

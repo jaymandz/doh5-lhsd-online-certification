@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('assessment_tools', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('facility_id');
             $table->string('facility_name');
-            $table->integer('facility_id');
-            
 
             $table->foreign('facility_id')->references('id')->on('facility_types');
+            
             $table->timestamps();
         });
     }

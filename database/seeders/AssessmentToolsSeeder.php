@@ -13,9 +13,12 @@ class AssessmentToolsSeeder extends Seeder
      */
     public function run(): void
     {
-        AssessmentTools::factory()->create([
-             'facilityTypeId' => '1',
-             'itemId' => '1'
+        $data = ([
+            'facility_id' => '1', //ABTC
+            'facility_name' => 'Rabvaxx',
+            'goal_number' => '1'
         ]);
+        
+        AssessmentTools::insert($data);
     }
 }
