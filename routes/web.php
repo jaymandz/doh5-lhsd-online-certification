@@ -40,11 +40,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/facility-types', [FacilityTypeController::class, 'index']);
-Route::get('/assessment-tool', function (Request $request) {   
-    dd($request);
+Route::post('/assessment-tool', function (Request $request) {   
+    // dd($request);
     return Inertia::render('AssessmentTool', [
-               'facilityName' => $request->facilityName,
-               'selectedFaciType' => $request->selectedFaciType
+               'assessmentTool' => $request
             ]);
 })->name('assessment-tool');
 
