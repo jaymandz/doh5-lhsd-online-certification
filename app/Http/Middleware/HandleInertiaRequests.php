@@ -40,6 +40,9 @@ class HandleInertiaRequests extends Middleware
                 'selected_faci_type' => $request->selected_faci_type,
                 'facility_name' => $request->facility_name
             ],
+            // 'receivedToolInfo' => [
+            //     'survey_data' => $request
+            // ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),

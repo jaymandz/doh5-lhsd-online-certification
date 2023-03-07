@@ -26,6 +26,7 @@ const form = useForm({
 });
 
 const facility_types = ref([]);
+const retrievedToolInfo = ref([]);
 
 // const selectedFaciType = '';
 // const facilityName = '';
@@ -37,7 +38,10 @@ const test = (log1, log2) => {
 
 const submit = () => {
     form.post(route('assessment-tool.retrieve') ,{
-        onFinish: () => form.get(route('assessment-tool.show'))
+        onFinish: () => axios.get(route('assessment-tool.show')).then(response => {
+            retrievedToolInfo.value = Object.values(response)
+        })
+        //axios.get here for data
     });
 };
 

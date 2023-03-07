@@ -45,12 +45,13 @@ Route::get('/facility-types', [FacilityTypeController::class, 'index']);
 
 
 // Assessment Tools [AssessmentToolController::class, 'index']
+//Route::get('/assessment-tool', [AssessmentToolsController::class, 'index'])->name('assessment-tool.show');
 Route::get('/assessment-tool', [AssessmentToolsController::class, 'index'])->name('assessment-tool.show');
 
 Route::post('/assessment-tool', function (Request $request) {  
     return Inertia::render('AssessmentTool', [
                'assessmentTool' => $request
-            ]);
+    ]);
 })->name('assessment-tool.retrieve');
 
 

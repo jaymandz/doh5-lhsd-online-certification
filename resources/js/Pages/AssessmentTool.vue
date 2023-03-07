@@ -30,7 +30,11 @@ const submit = () => {
     });
 };
 
+
+
 const newData = computed(() => usePage().props.assessmentTools);
+
+const receivedToolData = computed(() => usePage().props.receivedToolInfo);
 // const tools_by_faci = computed(() => usePage().props.assessmentTools);
 
 const routes = {
@@ -41,17 +45,17 @@ const routes = {
 const tools_by_faci = ref([]);
 
 
-onMounted(() => {
-    fetch(`/assessment-tool/${newData.selected_faci_type}`, {
-        method: 'POST'
-    }).then(response => (
-        response.json()
-        ).then(response => (
-           tools_by_faci.value = Object.values(response),
-           console.log(tools_by_faci)
-        )
-    ));
-});
+// onMounted(() => {
+//     fetch(`/assessment-tool/${newData.selected_faci_type}`, {
+//         method: 'POST'
+//     }).then(response => (
+//         response.json()
+//         ).then(response => (
+//            tools_by_faci.value = Object.values(response),
+//            console.log(tools_by_faci)
+//         )
+//     ));
+// });
 
 
 </script>
@@ -65,7 +69,7 @@ onMounted(() => {
             <div class="mt-16">
                
                 <div>
-                    {{ tools_by_faci}}
+                    {{ receivedToolData }}
                 <label for="assessment-tool">Facility Name: {{newData.facility_name}} </label><br/><br/>
                 <label for="assessment-tool">ASSESSMENT TOOL</label>
                 {{newData.selected_faci_type}}
