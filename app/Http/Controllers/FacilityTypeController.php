@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AssessmentTools;
 use App\Models\FacilityType;
 use App\Http\Requests\StoreFacilityTypeRequest;
 use App\Http\Requests\UpdateFacilityTypeRequest;

@@ -21,8 +21,8 @@ import { ref, onMounted } from 'vue'
 // });
 
 const form = useForm({
-    facility_name: '',
-    selected_faci_type: ''
+    facility_name: null,
+    selected_faci_type: null
 });
 
 const facility_types = ref([]);
@@ -36,7 +36,9 @@ const test = (log1, log2) => {
 
 
 const submit = () => {
-    form.post(route('assessment-tool'));
+    form.post(route('assessment-tool.retrieve') ,{
+        onFinish: () => form.get(route('assessment-tool.show'))
+    });
 };
 
 const routes = {

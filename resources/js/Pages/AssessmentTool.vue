@@ -9,6 +9,7 @@ import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import Home from './Home.vue';
 import AssessmentTool from './AssessmentTool.vue';
 import { computed } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 
 defineProps({
     canLogin: Boolean,
@@ -30,16 +31,27 @@ const submit = () => {
 };
 
 const newData = computed(() => usePage().props.assessmentTools);
+// const tools_by_faci = computed(() => usePage().props.assessmentTools);
 
 const routes = {
     '/': Home,
     '/assessment-tool': AssessmentTool
 }
 
-const data = [
-  [1, 2],
-  [3, 4],
-];
+const tools_by_faci = ref([]);
+
+
+onMounted(() => {
+    fetch(`/assessment-tool/${newData.selected_faci_type}`, {
+        method: 'POST'
+    }).then(response => (
+        response.json()
+        ).then(response => (
+           tools_by_faci.value = Object.values(response),
+           console.log(tools_by_faci)
+        )
+    ));
+});
 
 
 </script>
@@ -53,9 +65,11 @@ const data = [
             <div class="mt-16">
                
                 <div>
+                    {{ tools_by_faci}}
+                <label for="assessment-tool">Facility Name: {{newData.facility_name}} </label><br/><br/>
                 <label for="assessment-tool">ASSESSMENT TOOL</label>
-                {{newData.facilityName}}
-                <TextInput
+                {{newData.selected_faci_type}}
+                <!-- <TextInput
                     id="email"
                     type="text"
                     class="mt-2 block w-full"
@@ -63,15 +77,15 @@ const data = [
                     required
                     autofocus
                     autocomplete="username"
-                />
+                /> -->
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <!-- <InputError class="mt-2" :message="form.errors.email" /> -->
             </div>
 
             <div class="mt-4">
                 <InputLabel for="password" value="Password" />
 
-               <TextInput
+               <!-- <TextInput
                     id="email"
                     type="text"
                     class="mt-2 block w-full"
@@ -79,9 +93,9 @@ const data = [
                     required
                     autofocus
                     autocomplete="username"
-                />
+                /> -->
 
-                <InputError class="mt-2" :message="form.errors.password" />
+                <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
             </div>
 
            

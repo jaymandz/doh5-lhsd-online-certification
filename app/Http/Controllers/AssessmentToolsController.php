@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\AssessmentTools;
 use App\Http\Requests\StoreAssessmentToolsRequest;
 use App\Http\Requests\UpdateAssessmentToolsRequest;
-
+use App\Models\FacilityType;
+use Illuminate\Http\Request;
 class AssessmentToolsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return AssessmentTools::where('facility_id', $request->selected_faci_type)->first();
+        //return dd($id);
     }
 
     /**

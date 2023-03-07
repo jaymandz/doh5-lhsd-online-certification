@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\FacilityTypeController;
+use App\Http\Controllers\AssessmentToolsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use App\Models\AssessmentTools;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,11 +42,17 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/facility-types', [FacilityTypeController::class, 'index']);
-Route::post('/assessment-tool', function (Request $request) {   
+
+
+// Assessment Tools [AssessmentToolController::class, 'index']
+Route::get('/assessment-tool', [AssessmentToolsController::class, 'index'])->name('assessment-tool.show');
+
+Route::post('/assessment-tool', function (Request $request) {  
     return Inertia::render('AssessmentTool', [
                'assessmentTool' => $request
             ]);
-})->name('assessment-tool');
+})->name('assessment-tool.retrieve');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

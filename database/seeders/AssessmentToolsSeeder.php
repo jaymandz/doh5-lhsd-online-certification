@@ -21,10 +21,10 @@ class AssessmentToolsSeeder extends Seeder
             a safe and effective physical environmetn to its patients and staff',
             'standard_number' => '1',
             'standard_criterion' => 'The TB DOTS center is easily located and patients have convenient and safe access to the center.',
-            // 'evidence_of_progress' => '',
-            // 'center_rating',   
-            // 'surveyor_comments',   
-            // 'surveyor_team_rating'    
+            'evidence_of_progress' => '',
+            'center_rating' => '',   
+            'surveyor_comments' => '',   
+            'surveyor_team_rating' => ''    
         ]);
         
         AssessmentTools::insert($data);
