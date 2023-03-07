@@ -15,9 +15,16 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('facility_id');
             $table->string('facility_name');
+            $table->string('goal_number');
+            $table->text('goal_criterion');
+            $table->string('standard_number');
+            $table->text('standard_criterion');
+            $table->text('evidence_of_progress');
+            $table->string('center_rating');    
+            $table->text('surveyor_comments');    
+            $table->string('surveyor_team_rating');   
 
             $table->foreign('facility_id')->references('id')->on('facility_types');
-            
             $table->timestamps();
         });
     }

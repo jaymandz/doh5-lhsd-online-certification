@@ -16,11 +16,11 @@ class SubgoalsSeeder extends Seeder
         $data = ([
             'assessment_tool_id' => '1',
             'subgoal_number' => '1.1.',
-            'criterion',
-            'evidence_of_progress',
-            'center_rating',   
-            'surveyor_comments',   
-            'surveyor_team_rating'    
+            // 'criterion' => 'There is appropriate signage bearing the name of the TB DOTS center to assist patients accessing the center.',
+            // 'evidence_of_progress',
+            // 'center_rating',   
+            // 'surveyor_comments',   
+            // 'surveyor_team_rating'    
         ]);
         
         Subgoals::insert($data);
