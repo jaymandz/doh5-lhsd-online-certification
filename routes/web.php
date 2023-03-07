@@ -41,7 +41,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/facility-types', [FacilityTypeController::class, 'index']);
 Route::post('/assessment-tool', function (Request $request) {   
-    // dd($request);
     return Inertia::render('AssessmentTool', [
                'assessmentTool' => $request
             ]);

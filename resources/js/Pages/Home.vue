@@ -21,11 +21,11 @@ import { ref, onMounted } from 'vue'
 // });
 
 const form = useForm({
-    facilityName: null,
-    selectedFaciType: null
+    facility_name: '',
+    selected_faci_type: ''
 });
 
-const facilityTypes = ref([]);
+const facility_types = ref([]);
 
 // const selectedFaciType = '';
 // const facilityName = '';
@@ -47,7 +47,7 @@ onMounted(() => {
     fetch('/facility-types').then(response => (
         response.json()
         ).then(response => (
-           facilityTypes.value = Object.values(response)
+           facility_types.value = Object.values(response)
             // console.log(facilityTypes.value[0].facilityTypeName)
         )
     ));
@@ -101,10 +101,10 @@ const onChange = (event) => {
                
                 <p>Facility Name</p>
                 <TextInput
-                    id="facilityName"
+                    id="facility_name"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.facilityName"
+                    v-model="form.facility_name"
                     required
                     autofocus
                 />
@@ -118,21 +118,21 @@ const onChange = (event) => {
             <div class="inline-block relative w-full py-4 flex-1">
                 <select
                 class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                v-model="form.selectedFaciType"
+                v-model="form.selected_faci_type"
                 @change="onChange($event)"
                 >
                 <option
-                    v-for="item in facilityTypes"
+                    v-for="item in facility_types"
                     :value="item.id"
                     :key="item.id"
                 >
-                    {{ '[' + item.id + ']' + ' ' + item.facilityTypeName }}
+                    {{ '[' + item.id + ']' + ' ' + item.facility_type_name }}
                 </option>
             
                 </select>
           
             </div>
-            {{ selectedFaciType }}
+            {{ selected_faci_type }}
 
            
 

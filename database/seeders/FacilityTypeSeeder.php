@@ -14,8 +14,8 @@ class FacilityTypeSeeder extends Seeder
     public function run(): void
     {
         $data = ([
-            ['facilityTypeName' => 'ABTC'],
-            ['facilityTypeName' => 'TB-DOTS']
+            ['facility_type_name' => 'ABTC'],
+            ['facility_type_name' => 'TB-DOTS']
         ]);
         
         FacilityType::insert($data);

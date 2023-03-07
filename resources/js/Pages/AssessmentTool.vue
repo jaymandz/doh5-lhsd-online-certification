@@ -56,11 +56,9 @@ const data = [
                 <div>
                 <label for="assessment-tool">ASSESSMENT TOOL</label>
                 {{newData.facilityName}}
-            <!-- {{ newData.selectedFaciType }}
-             {{ newData.facilityName }} -->
                 <TextInput
                     id="email"
-                    type="email"
+                    type="text"
                     class="mt-2 block w-full"
                     v-model="form.email"
                     required
@@ -74,13 +72,14 @@ const data = [
             <div class="mt-4">
                 <InputLabel for="password" value="Password" />
 
-                <TextInput
-                    id="password"
-                    type="password"
+               <TextInput
+                    id="email"
+                    type="text"
                     class="mt-2 block w-full"
-                    v-model="form.password"
+                    v-model="form.email"
                     required
-                    autocomplete="current-password"
+                    autofocus
+                    autocomplete="username"
                 />
 
                 <InputError class="mt-2" :message="form.errors.password" />

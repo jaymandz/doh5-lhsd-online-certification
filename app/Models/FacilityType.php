@@ -10,7 +10,7 @@ class FacilityType extends Model
     use HasFactory;
 
     protected $fillable = [
-        'facilityTypeName'
+        'facility_type_name'
     ];
 
 }

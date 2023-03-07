@@ -37,8 +37,8 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'assessmentTools' => [
-                'selectedFaciType' => $request->selectedFaciType,
-                'facilityName' => $request->facilityName
+                'selected_faci_type' => $request->selected_faci_type,
+                'facility_name' => $request->facility_name
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
